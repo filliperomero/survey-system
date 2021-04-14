@@ -4,6 +4,8 @@
     "module": "commonjs",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {},
     "allowJs": true
   }
 }
