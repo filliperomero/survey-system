@@ -1,0 +1,7 @@
+{
+  "name": "survey-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fillipe Romero <fillipe.romero@gmail.com>",
+  "license": "MIT"
+}
