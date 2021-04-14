@@ -5,8 +5,8 @@
   "author": "Fillipe Romero <fillipe.romero@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
-    "test:staged": "jest",
+    "test": "jest --passWithNoTests --watch",
+    "test:staged": "jest --passWithNoTests",
     "prepare:husky": "husky install"
   },
   "devDependencies": {
