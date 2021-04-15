@@ -11,7 +11,7 @@ module.exports = {
     '!**/protocols/**',
     '!**/test/**'
   ],
-  coverageReporters: ['text-summary', 'lcov'],
+  coverageReporters: ['text', 'lcov'],
   coverageDirectory: 'coverage',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src/' }),
   testEnvironment: 'node',
