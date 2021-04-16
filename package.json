@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/main/server.ts",
+    "dev:server": "tsnd --respawn --inspect --transpile-only --ignore-watch node_modules --exit-child --clear src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "yarn test --watch",
