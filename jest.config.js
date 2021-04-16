@@ -17,6 +17,7 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts', '**/*.spec.ts'],
   preset: '@shelf/jest-mongodb',
+  watchPathIgnorePatterns: ['globalConfig'],
   transform: {
     '.+\\.ts$': 'ts-jest'
   }
