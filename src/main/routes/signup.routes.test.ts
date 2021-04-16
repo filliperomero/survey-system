@@ -1,7 +1,20 @@
 import request from 'supertest'
+
+import { MongoHelper } from '../../infra/db/mongodb/helpers/mongoHelper'
 import app from '../config/app'
 
 describe('Signup Route', () => {
+  beforeEach(async () => {
+    await MongoHelper.getCollection('accounts').deleteMany({})
+  })
+
+  beforeAll(async () => {
+    await MongoHelper.connect(process.env.MONGO_URL)
+  })
+
+  afterAll(async () => {
+    await MongoHelper.disconnect()
+  })
   it('should be able to return an account', async () => {
     await request(app)
       .post('/api/signup')
