@@ -5,7 +5,7 @@ import app from '../config/app'
 
 describe('Signup Route', () => {
   beforeEach(async () => {
-    await MongoHelper.getCollection('accounts').deleteMany({})
+    await (await MongoHelper.getCollection('accounts')).deleteMany({})
   })
 
   beforeAll(async () => {
