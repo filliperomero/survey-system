@@ -38,17 +38,19 @@ const makeSut = (): SutTypes => {
   }
 }
 
+const makeFakeAccountData = (): AddAccountModel => ({
+  name: 'joe doe',
+  email: 'joe.doe@mail.com',
+  password: '123456'
+})
+
 describe('DbAddAccount Usecase', () => {
   it('should be able to encrypt the password', async () => {
     const { sut, encrypterStub } = makeSut()
 
     const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
 
-    const accountData = {
-      name: 'joe doe',
-      email: 'joe.doe@mail.com',
-      password: '123456'
-    }
+    const accountData = makeFakeAccountData()
 
     sut.execute(accountData)
 
@@ -60,11 +62,7 @@ describe('DbAddAccount Usecase', () => {
 
     jest.spyOn(encrypterStub, 'encrypt').mockRejectedValueOnce(new Error())
 
-    const accountData = {
-      name: 'joe doe',
-      email: 'joe.doe@mail.com',
-      password: '123456'
-    }
+    const accountData = makeFakeAccountData()
 
     await expect(() => sut.execute(accountData)).rejects.toThrow()
   })
@@ -74,11 +72,7 @@ describe('DbAddAccount Usecase', () => {
 
     const addSpy = jest.spyOn(addAccountRepositoryStub, 'add')
 
-    const accountData = {
-      name: 'joe doe',
-      email: 'joe.doe@mail.com',
-      password: '123456'
-    }
+    const accountData = makeFakeAccountData()
 
     await sut.execute(accountData)
 
@@ -94,11 +88,7 @@ describe('DbAddAccount Usecase', () => {
 
     jest.spyOn(addAccountRepositoryStub, 'add').mockRejectedValueOnce(new Error())
 
-    const accountData = {
-      name: 'joe doe',
-      email: 'joe.doe@mail.com',
-      password: '123456'
-    }
+    const accountData = makeFakeAccountData()
 
     await expect(() => sut.execute(accountData)).rejects.toThrow()
   })
@@ -106,11 +96,7 @@ describe('DbAddAccount Usecase', () => {
   it('should be able to add and receive an account', async () => {
     const { sut } = makeSut()
 
-    const accountData = {
-      name: 'joe doe',
-      email: 'joe.doe@mail.com',
-      password: '123456'
-    }
+    const accountData = makeFakeAccountData()
 
     const account = await sut.execute(accountData)
 
