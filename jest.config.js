@@ -18,6 +18,6 @@ module.exports = {
   testMatch: ['**/*.test.ts', '**/*.spec.ts'],
   preset: '@shelf/jest-mongodb',
   transform: {
-    '.+//.ts$': 'ts-jest'
+    '.+\\.ts$': 'ts-jest'
   }
 }
