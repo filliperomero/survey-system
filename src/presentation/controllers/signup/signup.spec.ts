@@ -108,18 +108,6 @@ describe('SignUp Controller', () => {
     expect(httpResponse).toEqual(serverError(new ServerError(null)))
   })
 
-  it('should be able to return status 400 if password does not match passwordConfirmation', async () => {
-    const { sut } = makeSut()
-
-    const httpRequest = makeFakeRequest()
-
-    httpRequest.body.passwordConfirmation = 'any other password'
-
-    const httpResponse = await sut.handle(httpRequest)
-
-    expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
-  })
-
   it('should be able to return status 400 if an invalid email is provided', async () => {
     const { sut, emailValidatorStub } = makeSut()
 
