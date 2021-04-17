@@ -1,9 +1,11 @@
 import { Validation } from '@presentation/controllers/signup/signupProtocols'
 import { ValidationComposite } from '@presentation/helpers/validators/validationComposite'
-import { RequiredFieldValidation } from '@presentation/helpers/validators/requiredFieldValidation'
-import { CompareFieldValidation } from '@presentation/helpers/validators/compareFieldValidation'
+import {
+  CompareFieldValidation,
+  EmailValidation,
+  RequiredFieldValidation
+} from '@presentation/helpers/validators'
 import { EmailValidatorAdapter } from '@utils/emailValidatorAdapter'
-import { EmailValidation } from '@presentation/helpers/validators/emailValidation'
 
 export const makeSignUpValidation = (): ValidationComposite => {
   const validations: Validation[] = []
