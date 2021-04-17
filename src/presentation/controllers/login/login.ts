@@ -1,4 +1,4 @@
-import { badRequest, serverError, unauthorized, ok } from '@presentation/helpers/httpHelper'
+import { badRequest, serverError, unauthorized, ok } from '@presentation/helpers/http/httpHelper'
 import { Validation, Controller, HttpRequest, HttpResponse, Authentication } from './loginProtocols'
 
 export class LoginController implements Controller {
