@@ -3,9 +3,16 @@
     "target": "es2020",
     "module": "commonjs",
     "outDir": "./dist",
+    "baseUrl": "./src",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "paths": {},
+    "paths": {
+      "@data/*": ["data/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
+      "@presentation/*": ["presentation/*"],
+      "@utils/*": ["utils/*"]
+    },
     "allowJs": true
   }
 }

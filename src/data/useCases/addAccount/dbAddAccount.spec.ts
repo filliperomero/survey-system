@@ -1,4 +1,4 @@
-import { AccountModel } from '../../../domain/models/account'
+import { AccountModel } from '@domain/models/account'
 import { Encrypter, AddAccountModel, AddAccountRepository } from './addAccountProtocols'
 import { DbAddAccount } from './dbAddAccount'
 
