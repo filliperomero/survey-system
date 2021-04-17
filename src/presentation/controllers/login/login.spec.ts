@@ -1,7 +1,7 @@
 import { LoginController } from './login'
 import { badRequest, ok, serverError, unauthorized } from '../../helpers/http/httpHelper'
 import { MissingParamError, ServerError } from '@presentation/errors'
-import { HttpRequest, Authentication, Validation } from './loginProtocols'
+import { HttpRequest, Authentication, Validation, AuthenticationModel } from './loginProtocols'
 
 interface SutTypes {
   sut: LoginController
@@ -11,7 +11,7 @@ interface SutTypes {
 
 const makeSut = (): SutTypes => {
   class AuthenticationStub implements Authentication {
-    async auth(email: string, password: string): Promise<string> {
+    async auth(authentication: AuthenticationModel): Promise<string> {
       return Promise.resolve('any token')
     }
   }
@@ -49,7 +49,7 @@ describe('Login Controller', () => {
     const httpRequest = makeFakeRequest()
 
     await sut.handle(httpRequest)
-    expect(authSpy).toHaveBeenCalledWith('joe.doe@mail.com', 'any password')
+    expect(authSpy).toHaveBeenCalledWith({ email: 'joe.doe@mail.com', password: 'any password' })
   })
 
   it('should be able to return status 500 if Authentication throws', async () => {
