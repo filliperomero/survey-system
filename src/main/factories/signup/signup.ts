@@ -1,7 +1,7 @@
 import { Controller } from '@presentation/protocols'
 import { SignUpController } from '@presentation/controllers/signup/signup'
 import { DbAddAccount } from '@data/useCases/addAccount/dbAddAccount'
-import { BcryptAdapter } from '@infra/criptography/bcryptAdapter'
+import { BcryptAdapter } from '@infra/criptography/bcryptAdapter/bcryptAdapter'
 import { AccountMongoRepository } from '@infra/db/mongodb/accountRepository/accountMongoRepository'
 import { LogMongoRepository } from '@infra/db/mongodb/logRepository/logMongoRepository'
 import { LogControllerDecorator } from '../../decorators/log'
