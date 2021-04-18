@@ -1,10 +1,10 @@
 import { AccountModel } from '@domain/models/account'
-import { Encrypter, AddAccountModel, AddAccountRepository } from './addAccountProtocols'
+import { Hasher, AddAccountModel, AddAccountRepository } from './addAccountProtocols'
 import { DbAddAccount } from './dbAddAccount'
 
 interface SutTypes {
   sut: DbAddAccount
-  encrypterStub: Encrypter
+  hasherStub: Hasher
   addAccountRepositoryStub: AddAccountRepository
 }
 
@@ -21,19 +21,19 @@ const makeSut = (): SutTypes => {
     }
   }
 
-  class EncrypterStub {
-    async encrypt(value: string): Promise<string> {
+  class HasherStub implements Hasher {
+    async hash(value: string): Promise<string> {
       return Promise.resolve('hashed_password')
     }
   }
 
-  const encrypterStub = new EncrypterStub()
+  const hasherStub = new HasherStub()
   const addAccountRepositoryStub = new AddAccountRepositoryStub()
-  const sut = new DbAddAccount(encrypterStub, addAccountRepositoryStub)
+  const sut = new DbAddAccount(hasherStub, addAccountRepositoryStub)
 
   return {
     sut,
-    encrypterStub,
+    hasherStub,
     addAccountRepositoryStub
   }
 }
@@ -46,9 +46,9 @@ const makeFakeAccountData = (): AddAccountModel => ({
 
 describe('DbAddAccount Usecase', () => {
   it('should be able to encrypt the password', async () => {
-    const { sut, encrypterStub } = makeSut()
+    const { sut, hasherStub } = makeSut()
 
-    const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
+    const encryptSpy = jest.spyOn(hasherStub, 'hash')
 
     const accountData = makeFakeAccountData()
 
@@ -57,10 +57,10 @@ describe('DbAddAccount Usecase', () => {
     expect(encryptSpy).toHaveBeenCalledWith('123456')
   })
 
-  it('should be able to throw if encrypter throws', async () => {
-    const { sut, encrypterStub } = makeSut()
+  it('should be able to throw if Hasher throws', async () => {
+    const { sut, hasherStub } = makeSut()
 
-    jest.spyOn(encrypterStub, 'encrypt').mockRejectedValueOnce(new Error())
+    jest.spyOn(hasherStub, 'hash').mockRejectedValueOnce(new Error())
 
     const accountData = makeFakeAccountData()
 
