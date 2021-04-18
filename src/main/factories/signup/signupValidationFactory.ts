@@ -1,4 +1,4 @@
-import { Validation } from '@presentation/controllers/signup/signupProtocols'
+import { Validation } from '@presentation/controllers/signup/signupControllerProtocols'
 import { ValidationComposite } from '@presentation/helpers/validators/validationComposite'
 import {
   CompareFieldValidation,

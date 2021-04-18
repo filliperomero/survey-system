@@ -1,6 +1,6 @@
-import { SignUpController } from './signup'
+import { SignUpController } from './signupController'
 import { MissingParamError, ServerError } from '../../errors'
-import { AddAccount, AddAccountModel, AccountModel, Validation } from './signupProtocols'
+import { AddAccount, AddAccountModel, AccountModel, Validation } from './signupControllerProtocols'
 import { HttpRequest } from '../../protocols'
 import { ok, badRequest, serverError } from '../../helpers/http/httpHelper'
 

@@ -2,7 +2,7 @@ import {
   LoadAccountByEmailRepository,
   AddAccountRepository,
   UpdateAccessTokenRepository
-} from '@data/protocols/db'
+} from '@data/protocols/db/account'
 import { AccountModel } from '@domain/models/account'
 import { AddAccountModel } from '@domain/useCases/addAccount'
 import { MongoHelper } from '../helpers/mongoHelper'
