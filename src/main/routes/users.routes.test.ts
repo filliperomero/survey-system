@@ -53,5 +53,15 @@ describe('Users Route', () => {
         })
         .expect(200)
     })
+
+    it('should be able to return 401 on login', async () => {
+      await request(app)
+        .post('/api/users/login')
+        .send({
+          email: 'joe.doe@mail.com',
+          password: '123456'
+        })
+        .expect(401)
+    })
   })
 })
