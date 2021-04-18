@@ -1,3 +1,3 @@
 export * from './hasher'
 export * from './hashComprarer'
-export * from './tokenGenerator'
+export * from './encrypter'
